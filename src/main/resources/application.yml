@@ -1,0 +1,60 @@
+server:
+  port: 1200
+spring:
+  application:
+    name: shuiwu
+  datasource:
+      username: root
+      password: lzxs@root123456
+      url: jdbc:mysql://180.76.147.107:3306/eduexp?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+        minimum-idle: 3
+        maximum-pool-size: 10
+        max-lifetime: 30000
+        connection-test-query: SELECT 1
+  devtools:
+    restart:
+      enabled: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+#  静态文件放行
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+ #邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: 1358616552@qq.com
+    #QQ邮箱的授权码
+    password: mkmiojeqngxchdaf
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  thymeleaf:
+    prefix: classpath:/templates/
+    cache: false
+    mode: HTML5
+    suffix: .html
+    encoding: utf-8
+    mode: LEGACYHTML
+    servlet:
+      content-type: text/html
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+mybatis:
+  mapper-locations: classpath:mybtais/**
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: true

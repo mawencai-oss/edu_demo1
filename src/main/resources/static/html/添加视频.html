@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+</head>
+<body>
+<div class="layui-form-item">
+    <label class="layui-form-label">课程节数</label>
+    <div class="layui-input-block">
+        <input type="text" name="courseList" lay-verify="title" autocomplete="off" id="courseList" placeholder="" disabled class="layui-input">
+    </div>
+</div>
+<div class="layui-form-item">
+    <label class="layui-form-label">当前上传节数</label>
+    <div class="layui-input-block">
+        <input type="text"  lay-verify="title" autocomplete="off" id="videolist" placeholder="" disabled class="layui-input">
+    </div>
+</div>
+<div id="test1">
+    <div class="layui-upload">
+        <button type="button" class="layui-btn layui-btn-normal" id="testList">选择多文件上传</button>
+        <div class="layui-upload-list">
+            <table class="layui-table">
+                <thead>
+                <tr><th>文件名</th>
+                    <th>大小</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr></thead>
+                <tbody id="demoList"></tbody>
+            </table>
+        </div>
+        <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+    </div>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script>
+
+    $(function () {
+        var router = layui.router();
+        var courseList = router.search.courseList;
+        $("#courseList").val(courseList)
+        $.get("/findcount?id="+router.search.id,function (res) {
+            if(res>=courseList)
+                $("#test1").html("<span style='color: red'>当前进度已满</span>")
+            $("#videolist").val(res)
+        })
+    })
+    layui.use(['upload','element'],function () {
+        var upload=layui.upload
+        var element=layui.element
+        //多文件列表示例
+        var demoListView = $('#demoList')
+            ,uploadListIns = upload.render({
+            elem: '#testList'
+            ,url: '/UploadImg' //改成您自己的上传接口
+            ,accept: 'video'
+            ,multiple: true
+            ,auto: false
+            ,bindAction: '#testListAction'
+            ,choose: function(obj){
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    var tr = $(['<tr id="upload-'+ index +'">'
+                        ,'<td>'+ file.name +'</td>'
+                        ,'<td>'+ (file.size/1024).toFixed(1) +'kb</td>'
+                        ,'<td id="upload_state">等待上传</td>'
+                        ,'<td>'
+                        ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        ,'</td>'
+                        ,'</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.demo-reload').on('click', function(){
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.demo-delete').on('click', function(){
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+                    demoListView.append(tr);
+                });
+            }
+            ,before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function(index, file, result) {
+                    var tr = demoListView.find('tr#upload-' + index)
+                        , tds = tr.children();
+                    tds.eq(2).html('<span style="color: orange;">正在上传loading</span>');
+                })
+                layer.load(); //上传loading
+            }
+            ,done: function(res, index, upload){
+                var router = layui.router();
+                layer.msg("一个视频上传成功")
+                if(res.code==1){ //上传成功
+                    layer.closeAll('loading'); //关闭loading
+                    var tr = demoListView.find('tr#upload-'+ index)
+                        ,tds = tr.children();
+                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                    tds.eq(3).html(''); //清空操作
+                    $.get("/addvideolist?id="+router.search.id+"&videosrc="+res.data,function (res) {
+                        $("#videolist").val(res)
+                    })
+                    return delete this.files[index]; //删除文件队列已经上传成功的文件
+                }
+                this.error(index, upload);
+            }
+            ,progress: function(n, elem){
+                var percent = n + '%' //获取进度百分比
+                element.progress('demo', percent); //可配合 layui 进度条元素使用
+
+                //以下系 layui 2.5.6 新增
+                console.log(elem); //得到当前触发的元素 DOM 对象。可通过该元素定义的属性值匹配到对应的进度条。
+            }
+            ,error: function(index, upload){
+                var tr = demoListView.find('tr#upload-'+ index)
+                    ,tds = tr.children();
+                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+            }
+        });
+    })
+</script>
+</body>
+</html>

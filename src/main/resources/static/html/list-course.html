@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<title></title>
+		<script src="/static/js/jquery.min.js" type="text/javascript" ></script>
+		<link rel="stylesheet" type="text/css" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+			
+		<link rel="stylesheet" type="text/css" href="/static/css/edu.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/css/app.css"/>
+		
+		
+	</head>
+	<body>
+		
+		<nav class="nav-wrapper">
+		  	<div class="container">		  		
+			      <!-- logo-->
+			      <a class="logo" href="#">
+			      	<img src="/static/images/logo.png" class="img-responsive logo-lg"/>
+			      	<img src="/static/images/logo-sm.png" class="img-responsive logo-sm"/>
+			      </a>
+			      
+				  <!--分割线-->
+				  <div class="dividing-line"></div>
+
+			      <!--menu 菜单-    首页  老师招募计划 -->
+			      <ul class="nav-list nav-list2" id="shouyeli">
+			      	<!--首页  老师招募计划-->
+			        <li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+			      </ul>
+			      
+			      <!--搜索框-->
+			      <form class="navbar-form navbar-left">
+			        <div class="form-group">
+			          <input type="text" class="form-control" placeholder="输入课程或者老师名称">
+			        </div>
+			        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+			      </form>
+			      
+			      <!--登录-->
+			      <ul class="nav-list pull-right">
+			      	<li class="nav-list-hide"><a href="#">联系我们</a></li>
+			      	<li class="nav-list-hide"><a href="#">合作</a></li>
+			      	
+			      	<!--登录前判断  登录后影藏 (nav-login-before),显示(nav-login)-->
+			      	<li class="nav-login-before">
+			        	<a href="#">登陆</a>
+			        </li>
+			        <li class="nav-login">
+			        	<a href="#">会员名字</a>
+			        	<!--会员下拉-->
+			        	<ul class="dropdown-list">
+			        		<li class="dropdown-item"><a>全部订单</a></li>
+			        		<li class="dropdown-item"><a>退出登录</a></li>
+			        	</ul>
+
+			        </li>
+			      </ul>
+		  	</div>	
+
+		</nav>
+		
+		<!--课程分类-->	
+		<div class="clearfix"></div>
+		<div class="course-item-wrapper">
+			<div class="container">
+				<div class="row">
+					
+					<!--左侧课程-->
+					<div class="col-lg-9 course-list">
+						
+						<!--面包屑导航-->
+						<ol class="breadcrumb mt20">
+						  <li><a href="#">全部课程</a></li>
+						  <li class="active">学习课程</li>
+						</ol>
+						
+						<!--学习课程-->
+						<div class="learning-course mb25">
+							<h2 class="fl">学习课程</h2>
+							<div class="fl">
+								<a class="curr">全部</a>
+							</div>
+						</div>
+						
+						<!--课程筛选-->
+						<div class="course-select">							
+							<div class="course-select01">
+								<a>全部</a>
+								<a>免费课</a>
+								<a>付费课</a>
+							</div>							
+							<div class="course-select02">
+								<label class="checkbox-inline">
+								  <input type="checkbox" id="inlineCheckbox1" value="option1"> 录播
+								</label>
+								<label class="checkbox-inline">
+								  <input type="checkbox" id="inlineCheckbox2" value="option2"> 直播
+								</label>
+								<label class="checkbox-inline">
+								  <input type="checkbox" id="inlineCheckbox3" value="option3"> 可试听
+								</label>
+								<label class="checkbox-inline">
+								  <input type="checkbox" id="inlineCheckbox4" value="option4"> 有习题
+								</label>
+							</div>
+							<div class="course-select03">
+								<label class="checkbox-inline">
+								  <input type="checkbox" id="inlineCheckbox5" value="option5"> 正在直播
+								</label>
+								
+							</div>
+						</div>
+						
+						<!--筛选后的 课程列表-->
+						<div class="course-hot course-select-list mt25">
+							<div class="row" id="mycourse">
+								
+								<!--课程目前状态 判读：1、可试听加audition  2、正在直播加  broadcast -->
+				
+								<!--<div class="col-xs-6 col-md-4 audition">
+									<div class="thumbnail">
+								      <a>
+								      	<img src="/static/images/hot1.png" alt="">
+								      	<div class="item-status">
+								      		<span class="item-status-audition">
+								      			<img src="/static/images/icon1.png"/><p>可试听</p>
+								      		</span>								      		
+								      	</div>
+								      </a>
+								      <div class="caption">
+								        <h3 class="over-hide-more mb10"><a>互联网高级java架构课程</a></h3>
+								        <div class="item-line mb5">
+								        	<h5>共23节</h5>
+								        	<span>进度：2/36节</span>
+								        </div>
+								        <p><i class="item-line01">免费</i><i class="item-line02">8556人最近报名</i> </p>
+								      </div>
+								    </div>
+								</div>
+								<div class="col-xs-6 col-md-4 broadcast">
+									<div class="thumbnail">
+								      <a><img src="/static/images/hot1.png" alt="">
+								      	<div class="item-status">
+								      		<span class="item-status-audition">
+								      			<img src="/static/images/icon2.gif"/><p>正在直播</p>
+								      		</span>								      		
+								      	</div>
+								      </a>
+								      <div class="caption">
+								        <h3 class="over-hide-more mb10"><a>互联网高级java架构课程</a></h3>
+								        <div class="item-line mb5">
+								        	<h5>共23节</h5>
+								        	<span>进度：2/36节</span>
+								        </div>
+								        <p><i class="item-line01">免费</i><i class="item-line02">8556人最近报名</i> </p>
+								      </div>
+								    </div>
+								</div>-->
+
+							</div>
+							
+						</div>
+						<script>
+							function vidoelist(x) {
+							    var id=$(x).find("#mycouseid").text()
+								location.href="/static/html/6video.html/#/id="+id
+								console.log($(x).find("#mycouseid").text())
+                            }
+							var pagex;
+                            function allcourse(page) {
+                                $("#mycourse").empty()
+                                $.get("/findallcourse?page="+page,function (res) {
+                                    $.each(res.data.list,function (index,value) {
+                                        var per = value.coursePermission
+                                        if (per == "on")
+                                            per = "免费"
+                                        else
+                                            per = "会员可以观看"
+                                        $("#mycourse").append("<div onclick='vidoelist(this)' class=\"col-xs-6 col-md-4 audition\">\n" +
+                                            "\t\t\t\t\t\t\t\t\t<div class=\"thumbnail\">\n" +
+                                            "\t\t\t\t\t\t\t\t      <a>\n" +
+                                            "\t\t\t\t\t\t\t\t      \t<img src=\""+value.courseImg+"\" alt=\"\">\n" +
+                                            "\t\t\t\t\t\t\t\t      \t<div class=\"item-status\"><span style='display: none' id='mycouseid'>"+value.id+"</span>\n" +
+                                            "\t\t\t\t\t\t\t\t      \t\t<span class=\"item-status-audition\">\n" +
+                                            "\t\t\t\t\t\t\t\t      \t\t\t<img src=\"/static/images/icon1.png\"/><p>可试听</p>\n" +
+                                            "\t\t\t\t\t\t\t\t      \t\t</span>\t\t\t\t\t\t\t\t      \t\t\n" +
+                                            "\t\t\t\t\t\t\t\t      \t</div>\n" +
+                                            "\t\t\t\t\t\t\t\t      </a>\n" +
+                                            "\t\t\t\t\t\t\t\t      <div class=\"caption\">\n" +
+                                            "\t\t\t\t\t\t\t\t        <h3 class=\"over-hide-more mb10\"><a>"+value.courseName+"</a></h3>\n" +
+                                            "\t\t\t\t\t\t\t\t        <div class=\"item-line mb5\">\n" +
+                                            "\t\t\t\t\t\t\t\t        \t<h5>共"+value.courseList+"节</h5>\n" +
+                                            "\t\t\t\t\t\t\t\t        \t<span>进度："+value.info2+"/"+value.courseList+"节</span>\n" +
+                                            "\t\t\t\t\t\t\t\t        </div>\n" +
+                                            "\t\t\t\t\t\t\t\t        <p><i class=\"item-line01\">"+per+"</i><i class=\"item-line02\">"+value.courseMan+"人最近报名</i> </p>\n" +
+                                            "\t\t\t\t\t\t\t\t      </div>\n" +
+                                            "\t\t\t\t\t\t\t\t    </div>\n" +
+                                            "\t\t\t\t\t\t\t\t</div>")
+                                    })
+                                    pagex=res.data.pages
+                                    $("#onpage").text(res.data.pageNum)
+                                })
+                            }
+                            allcourse(1);
+                            function jump(x) {
+                                console.log(x)
+                                var page=parseInt($("#onpage").text())
+                                if(x==1)
+                                    allcourse(page-1);
+                                if(x==2)
+                                    allcourse(page+1);
+                            }
+						</script>
+						<!--分页-->
+						<nav class="paging text-center" aria-label="...">
+						  <ul class="pagination">
+						    <li class="" onclick="jump(1)"><a href="javascript:void(0)" aria-label="Previous" ><span aria-hidden="true" id="prev">&laquo;</span></a></li>
+						    <li class="active"><a href="#" ><spann id="onpage">1</spann> <span class="sr-only">(current)</span></a></li>
+						    <li onclick="jump(2)">
+						      <a href="javascript:void(0)" aria-label="Next" >
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
+
+					<!--右侧热门推荐-->
+					<div class="col-lg-3">
+						
+						<!--热门推荐-->
+						<div class="hot-recommend course-hot mt20">
+							<!--头部-->
+							<div class="panel-heading">
+								<h2 class="mb16">热门推荐</h2>
+							</div>
+							<!--课程-->
+							<div class="panel-body">	
+								<div class="row" id="hot">
+
+
+								</div>
+							
+							</div>
+		
+						</div>
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		
+		<!--猜你还喜欢-->
+		<div class="you-like course-hot">
+			<div class="container">
+				<!--头部-->
+				<div class="panel-heading pt30">
+					<h2>猜你还喜欢</h2>
+				</div>
+				<!--课程-->
+				<div class="panel-body">	
+					<div class="row" id="like">
+
+					</div>
+				
+				</div>
+			
+			</div>
+						
+		</div>
+		
+		
+		
+		
+		
+		<!--底部开始  start-->
+					
+		<!--新课程期待-->
+		<div class="container course-hot course-wait mt45">
+			
+			<!--头部-->
+			<div class="panel-heading">
+				<h2 class="mb16">新课程期待</h2>
+			</div>
+			
+			<!--课程-->
+			<div class="panel-body">
+				<div class="course-wait-list">					
+					 <a href="#excel" target="_blank">excel培训</a> 
+					 <a href="#linux" target="_blank">linux培训</a> 
+					 <a href="#plcbiancheng" target="_blank">plc编程培训</a>
+					 <a href="#it" target="_blank">it培训</a>
+					 <a href="#seo" target="_blank">seo培训</a> 
+					 <a href="#shukongbiancheng" target="_blank">数控编程培训</a> 
+					 <a href="#sql" target="_blank">sql培训</a>
+					 <a href="#rengongzhineng" target="_blank">人工智能培训</a>
+					 <a href="#ios" target="_blank">ios培训</a> 
+					 <a href="#android" target="_blank">android培训</a>
+					 <a href="#bianchengyuyan" target="_blank">编程语言培训</a> 
+					 <a href="#webqianduan" target="_blank">web前端培训</a> 
+					 <a href="#sike" target="_blank">思科培训</a> 
+					 <a href="#ccna" target="_blank">ccna培训</a>
+					 <a href="#qianrushi" target="_blank">嵌入式培训</a> 
+					 <a href="#html5" target="_blank">html5培训</a>  
+					 <a href="#wangluoyingxiao" target="_blank">网络营销培训</a> 
+					 <a href="#ruanjianceshi" target="_blank">软件测试培训</a> 
+					 <a href="#jiqiren" target="_blank">机器人培训</a> 
+					 <a href="#wangzhanjianshe" target="_blank">网站建设培训</a> 
+				</div>
+			</div>
+		</div>
+		
+		<!--footer-->
+		<footer class="mt30">
+			<!--地址-->
+			<div class="edu-add">
+				<div class="container"><span class="glyphicon glyphicon-map-marker"></span>地址：甘肃省兰州市城关区XXXXXXXXXXXXX</div>
+			</div>
+			
+			<!--版权信息 二维码 联系方式-->
+			<div class="edu-information">
+				<div class="container">
+					<div class="row">
+						<!--版权信息-->
+						<div class="col-xs-12 col-sm-6 col-md-3 copyright">
+							<p>版权所有：新医学「兰州」科技有限公司</p>
+				            <p>备案编号：<a href="http://www.beian.miit.gov.cn/" target="_blank">陇ICP备05101529号</a></p>
+				            <p><a class="footer-question mt10 mb20">问题解惑</a></p>
+						</div>
+						
+						<!--二维码-->
+						<div class="col-xs-12 col-sm-6 col-md-6 code">
+							<a class="scale-item" href="javascript:;" target="_blank" rel="nofollow">
+				              <img src="/static/images/code.jpg" alt="">
+				              <span>微信服务号</span>
+				            </a>
+				            <a class="scale-item" href="javascript:;" target="_blank" rel="nofollow">
+				              <img src="/static/images/code.jpg" alt="">
+				              <span>微信订阅号</span>
+				            </a>
+				            <a class="scale-item" href="javascript:;" target="_blank" rel="nofollow">
+				              <img src="/static/images/code.jpg" alt="">
+				              <span>新浪微博</span>
+				            </a>
+				            <a class="scale-item" href="javascript:;" target="_blank" rel="nofollow">
+				              <img src="/static/images/code.jpg" alt="">
+				              <span>客服微信</span>
+				            </a>
+				            <a class="scale-item" href="javascript:;" target="_blank" rel="nofollow">
+				              <img src="/static/images/code.jpg" alt="">
+				              <span>客服微信</span>
+				            </a>
+						</div>
+						
+						<!--联系方式-->
+						<div class="col-xs-12 col-sm-6 col-md-3 contact-us">
+							<p> 邮箱：zdkq@mail.sysu.edu.cn </p>
+				            <p>电话：020-83863002</p>
+				            <p>传真：020-83822807</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--底部友链-->
+			<div class="edu-footlinks">	
+				<div class="container">
+				  <a href="" target="_blank" rel="nofollow">XX课堂服务协议</a><u>|</u>
+		          <a href="" target="_blank" rel="nofollow">关于我们</a><u>|</u>
+		          <a href="" target="_blank" rel="nofollow">站点地图</a><u>|</u>
+		          <a href="" target="_blank" rel="nofollow">法律责任</a><u>|</u>
+		          <a href="" target="_blank">侵权投诉</a><u>|</u>
+		          <a href="" target="_blank" rel="nofollow">问题反馈</a><u>|</u>
+		          <a href="" target="_blank">帮助</a>					
+				</div>
+			</div>
+		</footer>
+		
+		<!--右侧工具栏-->
+		<div class="right-tool">
+			
+			<!--在线客服-->
+			<a class="tool-item online-service">
+				<span class="glyphicon glyphicon-headphones"></span>
+				<p>在线<br/>客服</p>
+			</a>
+			
+			<!--微信端-->
+			<a class="tool-item online-code">
+				<span class="glyphicon glyphicon-qrcode">  </span>
+				<p>微信<br/>平台</p>
+				<!--二维码图片-->
+				<div class="online-code-img"><img src="/static/images/code.jpg"/></div>
+			</a>
+			
+			<!--返回顶部-->
+			<a class="tool-item toTop">
+				<span class="glyphicon glyphicon-menu-up"></span>
+				<p>返回<br/>顶部</p>
+			</a>
+			
+		</div>
+		
+		
+		<script src="/static/js/jquery.min.js" type="text/javascript" ></script>
+		<script src="/static/node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/static/node_modules/swiper/js/swiper.min.js" type="text/javascript" ></script>
+		<script type="text/javascript" src="/static/js/js_base.js" ></script>
+		
+		<!--底部开始  end-->
+		
+	</body>
+</html>

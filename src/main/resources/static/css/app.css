@@ -1,0 +1,206 @@
+
+/**
+ *
+ * (c) Copyright 2019 Administrator. All Rights Reserved. 
+ * 2019-12-23
+ * 
+ * project:
+ * company:
+ * author: ssh
+ * 系统版本:1.0 s
+ * 
+ */
+
+@charset "utf-8";
+
+@media (max-width: 1200px){
+	.dividing-line{display: none;}	
+}
+@media (max-width: 768px) {
+	
+	/*logo*/
+	.nav-wrapper .logo{ width:10%; margin-top: 1.6rem;}
+	.nav-wrapper .logo img.logo-lg{display: none; }
+	.nav-wrapper .logo img.logo-sm{width: 100%; height: auto; display: block;}
+	
+	
+	/*menu 图标*/
+	/*.navbar-default .navbar-toggle{ margin-top: 1.5rem; }*/
+	.nav-wrapper .nav-list2{display: none;}
+	
+	/*搜索框*/
+	.nav-wrapper .navbar-form{width: 67%;display: inline-block; float: left; border-color: #fff; margin-top: 2rem; margin-left: 0.2rem;}
+	.nav-wrapper .navbar-form .form-group{ width: 82%;display: inline-block;float: left;}
+	.nav-wrapper .navbar-form .form-control{width: 100%;display: inline-block;float: left;font-size: 12px;}
+	.nav-wrapper .navbar-form .btn-default{width: 18%;display: inline-block;  float: left;}
+	
+	.navbar-right{display: inline-block;float: right;}
+	
+	/*联系我们 、合作     隐藏*/
+	.nav-wrapper .container li.nav-list-hide{display: none;}
+		
+	/*推荐课程*/
+	.course-recommend h2{ font-size: 16px; margin-right: 5px; }
+	.course-recommend .container>a{ padding: 0 8px; font-size: 14px; overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis; white-space:nowrap; }
+	.course-recommend .container>span a{font-size: 18px;}
+	.course-recommend .container>span a>i:first-child{display: none;}
+	.course-recommend .container>span a>i:last-child{display: block;}
+	
+	/*右侧热门推荐*/
+	.hot-recommend{background: #fff;}
+	
+}
+
+@media (max-width: 414px) {
+	
+	
+	/*热门课程*/
+	.course-hot{margin-top: 0px;}
+	.course-hot .panel-heading{padding-bottom: 0;}
+	.course-hot .panel-heading h2{font-size: 24px;margin-bottom: 0;}
+	.course-hot .panel-body{padding-bottom: 0;}
+	
+	/*新课程期待*/
+	.course-wait .panel-heading h2{margin-bottom: 15px;}
+	.course-wait .course-wait-list{ width: 100%; display: -webkit-box; -webkit-box-orient: vertical; -moz-box-orient: vertical; -o-box-orient: vertical; box-orient: vertical;  -webkit-line-clamp: 3; -moz-line-clamp: 3; -o-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+	
+	/*右侧工具栏*/
+	.right-tool{transform: scale(0.8); width: 50px; right: 0px;}
+	
+	/*底部友链*/
+	footer .edu-footlinks{line-height: 30px; padding: 15px 0;}
+	
+	/*登录注册页面*/
+	.login{width: auto;}
+	
+	
+	/*学习课程*/
+	.learning-course h2{width: 25%;}
+	.learning-course>div{width: 73%;}
+	
+	/*课程筛选*/
+	.course-select{}
+	.course-select .course-select02{border-left: none;border-right: none;padding-top: 10px; padding-bottom: 10px;}
+	
+	/*会员信息*/
+	.member-wrapper{padding-top: 20px;padding-bottom: 30px;}
+	.member-wrapper .container{padding: 0;}
+	
+	/*课程切换*/	
+	.course-tab .swiper-button-prev,
+	.course-tab .swiper-button-next{ transform:scale(0.7); } 
+	
+	
+	/*报名来源*/
+	.course-details-source{height: auto; display: inline-block;}
+	.course-settings-ctn{float: none;}
+	.course-settings-ctn .process{ width: 100%;display: block;margin-bottom: 10px;    }
+	.course-settings-ctn .ctrl-item:nth-child(2):before{display: none;}
+
+	
+	
+	/*全部课程*/
+	.current-progress>h2{font-size: 16px;}
+	.current-progress-list>h2 i:last-child{font-size: 16px;}
+	.current-progress-list ul li span{margin-right: 8px;}
+	.current-progress-list ul li div>p{font-size: 12px;}
+	.current-progress-list ul li a{width: 60px; font-size: 12px;}
+	
+	/*用户密码修改*/
+	.course-details-source .input-group .form-control{font-size: 12px;}
+	
+	/*视频播放页面*/
+	/*面包屑导航*/
+	.video-breadcrumb .breadcrumb{margin-top: 10px;margin-bottom: 10px;}
+	
+	/*左侧视频播放*/
+	.video-wrapper .video-player{padding-left: 0;padding-right: 0;}
+	.video-wrapper .video-player .video-player-controls{height: auto;}
+	
+	/*右侧课程目录*/
+	.course-catalogue{background: #fff; width: 100%;    height: auto;}
+	.course-catalogue .course-catalogue-wrapper{color: #333;font-size: 16px;padding: 0px 15px;}
+	
+	.course-catalogue .course-catalogue-wrapper .course-details-item{border-top: 1px solid #ddd;padding: 10px 0;}
+	.course-catalogue .course-catalogue-wrapper .course-details-item>h2{ padding-left: 10px;}
+	.course-catalogue .course-catalogue-wrapper .course-details-item>h2 i:last-child{color: #555;font-size: 16px;}
+	
+	.course-catalogue .course-catalogue-wrapper .course-details-item ul{ display: none; padding-bottom: 10px;}
+	
+	.course-catalogue .course-catalogue-wrapper .course-details-item ul li a>span{float: right;  padding: 2px 10px; width: auto; line-height: inherit; height: auto; background: #fff; border: 1px solid #c9d0d6; color: #82919e;}
+	
+	.course-catalogue .course-catalogue-wrapper .course-details-item ul li a div{margin-left: 10px;}
+	.course-catalogue .course-catalogue-wrapper .course-details-item ul li a div h2{color: #999;}
+	
+	.course-catalogue .course-catalogue-wrapper .course-details-item ul li.hover span, 
+	.course-catalogue .course-catalogue-wrapper .course-details-item ul li:hover span{
+		background: #fff;
+		border-color: #23b8ff;
+		color: #23b8ff;
+	}
+	
+	
+	
+	
+	/*视频下方的 课程信息*/
+	.video-wrapper .video-player-info{background: #fff;}
+	.video-wrapper .video-player-info .video-title h2{color: #000;}
+	.video-wrapper .video-player-info .video-hints .video-hints-item01{color: #777;margin-right: 0;margin-bottom: 10px;}
+	.video-wrapper .video-player-info .video-hints .video-hints-item01 h2{margin-right: 10px;}
+	.video-wrapper .video-player-info .video-hints .video-hints-item01,
+	.video-wrapper .video-player-info .video-hints .video-hints-item02{height: 24px; line-height: 24px;}
+	
+	.video-wrapper .video-player-info .video-hints .video-hints-item02 .ctrl-item a, 
+	.video-wrapper .video-player-info .video-hints .video-hints-item02 .ctrl-item a span{font-size: 14px;}
+	
+	
+	/*左侧课程概述*/
+	.course-description{padding-left: 0;padding-right: 0;margin-top: 15px;}
+	.detail-description .course-description .course-description-title{padding-left: 15px; padding-right: 15px;}
+	.detail-description .course-description-wrapper{padding: 15px 25px;}
+	
+}
+@media (max-width: 375px) {
+	
+	/*热门课程*/
+	.course-hot .row>div .caption{padding: 5px;}
+	.course-hot .row>div .caption .item-line span{margin-left: 0; padding-left: 0;; border-left: none;    float: right;}
+	.course-hot .row>div .caption p i.item-line01{ margin-right: 0; font-size: 12px;}
+	.course-hot .row>div .caption p i.item-line02{float: right;}
+	
+	/*推荐课程*/
+	.course-recommend h2{ font-size: 14px; }
+	.course-recommend .container>a{ padding: 0 5px; font-size: 14px; max-width: 101px; }
+	
+}
+@media (max-width: 320px) {
+	/*logo*/
+	.nav-wrapper .logo{margin-top: 1.8rem;}
+	
+	/*搜索框*/
+	.nav-wrapper .navbar-form{width: 72%;}
+	.nav-wrapper .navbar-form .form-group{ width: 82%;}
+	.nav-wrapper .navbar-form .form-control{width: 100%;}
+	.nav-wrapper .navbar-form .btn-default{width: 18%;}
+	
+	/* 登陆 */
+	.nav-wrapper .container .nav-list li a{padding: 15px 0px;}
+	
+	/*热门课程*/
+	.course-hot .row>div .caption{padding: 1px;}
+	
+	/*推荐课程*/
+	.course-recommend h2{ display: none; }
+	.course-recommend .container>a{ max-width: 106px; } 
+	
+	/*学习课程*/
+	.learning-course h2{width: 32%;}
+	.learning-course>div{width: 64%;}
+	
+	/*课程筛选*/
+	.course-select{}
+	.course-select .course-select02{border-left: none;border-right: none;padding-top: 10px; padding-bottom: 10px;}
+	
+	
+	
+}
